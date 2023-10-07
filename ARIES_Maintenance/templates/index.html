@@ -1,0 +1,353 @@
+{% extends 'structure.html' %}
+{% load static %}
+{% block content %}
+
+    <style>
+        .content-section {
+            margin-top: 20px;
+        }
+
+        .ftco-section {
+            margin-top: -20px;
+        }
+
+        .solar-data-portal {
+            height: 100%;
+            padding-bottom: 30px;
+        }
+
+        .solar-header-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 20px 20px 30px;
+        }
+
+        .text-content {
+            width: 50%;
+            margin: 10px 20px 10px 0px;
+            text-align: justify;
+        }
+
+        .daily-image {
+            width: 50%;
+            margin: 10px 0px 10px 20px;
+            text-align: center;
+
+        }
+
+        .daily-image img {
+            max-width: 450px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .image-caption {
+            text-align: center;
+            font-size: smaller;
+        }
+
+        /* SAMPLE IMAGES */
+        .image-gallery-container {
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .gallery {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+
+        .gallery li {
+            width: 200px;
+            height: 250px;
+            margin: 15px;
+            box-sizing: border-box;
+        }
+
+        .flip {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 3s;
+        }
+
+        .flip:hover {
+            transform: rotateY(180deg);
+        }
+
+        .front-side,
+        .back-side {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            backface-visibility: hidden;
+        }
+
+        .front-side {
+            z-index: 2;
+        }
+
+        .back-side {
+            transform: rotateY(180deg);
+        }
+
+        /* Adjust the styles for the images as needed */
+        .front-side img,
+        .back-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        img {
+            border-radius: 5px;
+        }
+
+        .home-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            /* Align buttons to the bottom */
+            height: 400px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            position: relative;
+        }
+
+        .home-section {
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+
+
+        .newupdates {
+            position: absolute;
+            top: 30px;
+            /* Adjust the top position as needed */
+            right: 20px;
+            /* Adjust the right position as needed */
+            width: 45%;
+            /* Increase the width to make it wider */
+            min-height: 250px;
+            max-height: 350px;
+            /* Keep the height as desired */
+            overflow-y: auto;
+            /* Add scroll when content exceeds the height */
+            padding: 10px;
+            background-color: #f7f7f7;
+            /* Add a background color */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* Add a subtle shadow */
+            z-index: 1;
+            /* Ensure the news and updates section is above other content */
+        }
+
+        .news-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #fff;
+            /* White background for news items */
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            /* Smooth background color transition on hover */
+        }
+
+        .news-item:hover {
+            background-color: #f0f0f0;
+            /* Change background color on hover */
+        }
+
+        .news-title {
+            font-size: 18px;
+            color: #333;
+            /* Dark text color */
+            margin-bottom: 5px;
+        }
+
+        .news-description {
+            font-size: 14px;
+            color: #777;
+            /* Lighter text color */
+            margin-bottom: 5px;
+        }
+
+        .news-description a {
+            color: #007BFF;
+            /* Add a link color */
+            text-decoration: none;
+            transition: color 0.3s ease;
+            /* Smooth link color transition on hover */
+        }
+
+        .news-description a:hover {
+            color: #0056b3;
+            /* Change link color on hover */
+        }
+
+        @keyframes newsAnimation {
+            0% {
+                top: 100%;
+            }
+
+            50% {
+                top: 0;
+            }
+
+            100% {
+                top: -100%;
+            }
+        }
+
+        /* Add styles for the chart container */
+        .chart-container {
+            width: auto;
+            /* Increase the width to make it wider */
+            height: 370px;
+            }
+    </style>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Part1', 'Part2'],
+                ['2004', 1000, 400],
+                ['2005', 1170, 460],
+                ['2006', 660, 1120],
+                ['2007', 1030, 540]
+            ]);
+
+            var options = {
+                title: 'Temperature Tracking',
+                curveType: 'function',
+                legend: { position: 'bottom' }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+
+    <div class="container">
+
+        <!-- SAMPLE IMAGES -->
+        <div class="image-gallery-container">
+            <ul class="gallery">
+                <li>
+                    <div class="flip">
+                        <div class="front-side">
+                            <img src="{% static 'solar-images/S-2022-04-20T04_28_02-HA.jpg' %}" alt="Card image cap">
+                        </div>
+                        <div class="back-side">
+                            <img src="{% static 'solar-images/S-2022-04-21T05_50_57-HA.jpg' %}" alt="Card image cap">
+                        </div>
+                    </div>
+                </li>
+                <!-- Repeat the structure for other solar-images -->
+                <li>
+                    <div class="flip">
+                        <div class="front-side">
+                            <img src="{% static 'solar-images/S-2022-05-18T06_17_53-HA.jpg' %}" alt="Card image cap">
+                        </div>
+                        <div class="back-side">
+                            <img src="{% static 'solar-images/S-2022-11-15T09_22_54-HA.jpg' %}" alt="Card image cap">
+                        </div>
+                    </div>
+                </li>
+                <!-- Repeat the structure for other solar-images -->
+                <li>
+                    <div class="flip">
+                        <div class="front-side">
+                            <img src="{% static 'solar-images/S-2022-11-16T04_47_14-HA.jpg' %}" alt="Card image cap">
+                        </div>
+                        <div class="back-side">
+                            <img src="{% static 'solar-images/S-2022-12-20T05_54_52-HA.jpg' %}" alt="Card image cap">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="flip">
+                        <div class="front-side">
+                            <img src="{% static 'solar-images/S-2023-03-24T02_18_36-HA.jpg' %}" alt="Card image cap">
+                        </div>
+                        <div class="back-side">
+                            <img src="{% static 'solar-images/S-2023-05-30T02_36_30-HA.jpg' %}" alt="Card image cap">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="home-container">
+
+            <!-- line chart here -->
+            <div class="chart-container" id="curve_chart"></div>
+
+            <div class="newupdates">
+                <div class="news-content">
+                    <div class="news-item">
+                        <h3 class="news-title">Event Announcement</h3>
+                        <p class="news-description">Join us for an exciting event on [Date]. <a href="#">Learn more</a>
+                        </p>
+                    </div>
+                    <div class="news-item">
+                        <h3 class="news-title">Product Update</h3>
+                        <p class="news-description">We've released a new version of our product with amazing features.
+                            <a href="#">Read more</a></p>
+                    </div>
+                    <div class="news-item">
+                        <h3 class="news-title">Important Notice</h3>
+                        <p class="news-description">Please take note of the following important information. <a
+                                href="#">Details here</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <script>
+        const newsContent = document.querySelector('.news-content');
+
+        function moveNews() {
+            newsContent.style.animation = 'none';
+            void newsContent.offsetWidth; // Trigger reflow
+            newsContent.style.animation = null;
+        }
+
+        moveNews();
+        setInterval(moveNews, 10000); // Move news every 10 seconds
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('.flip').hover(
+                function () {
+                    $(this).find('.back-side').css('opacity', '1');
+                },
+                function () {
+                    $(this).find('.back-side').css('opacity', '0');
+                }
+            );
+        });
+    </script>
+
+{% endblock %}

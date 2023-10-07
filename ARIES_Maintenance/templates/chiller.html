@@ -1,0 +1,120 @@
+{% extends 'structure.html' %}
+{% load static %}
+{% block content %}
+
+
+    <style>
+      
+        /* Navigation Menu Styles */
+        nav {
+            text-align: center;
+            background-color: #333;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+        }
+
+        /* Content container-chiller Styles */
+        .container-chiller {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Critical and Non-Critical Sections Styles */
+        .section {
+            text-align: center;
+            margin: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .part-button {
+            background-image: url('button-background.jpg'); /* Replace with your button background image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: #fff;
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: grey; /* Add this line to change the button background color */
+        }
+
+        .part-button:hover {
+            opacity: 0.8;
+        }
+
+        .part-description {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .part-button:focus + .part-description {
+            display: block;
+        }
+    </style>
+
+    <nav>
+        <a href="#critical-section">Critical Parts</a>
+        <a href="#non-critical-section">Non-Critical Parts</a>
+    </nav>
+
+    <!-- Content container-chiller -->
+   
+        <section id="critical-section" class="section">
+            <h2>Critical Parts</h2>
+            <button class="part-button">Part 1</button>
+            <div class="part-description">
+                <h3>Part 1 Information</h3>
+                <p>Description for Part 1 goes here...</p>
+                <img src="part1-image.jpg" alt="Part 1 Image" width="200">
+            </div>
+            <button class="part-button">Part 2</button>
+            <div class="part-description">
+                <h3>Part 2 Information</h3>
+                <p>Description for Part 2 goes here...</p>
+                <img src="part2-image.jpg" alt="Part 2 Image" width="200">
+            </div>
+            <button class="part-button">Part 3</button>
+            <div class="part-description">
+                <h3>Part 3 Information</h3>
+                <p>Description for Part 3 goes here...</p>
+                <img src="part3-image.jpg" alt="Part 3 Image" width="200">
+            </div>
+        </section>
+
+        <!-- Non-Critical Parts Section -->
+        <section id="non-critical-section" class="section">
+            <h2>Non-Critical Parts</h2>
+            <button class="part-button">Part 4</button>
+            <div class="part-description">
+                <h3>Part 4 Information</h3>
+                <p>Description for Part 4 goes here...</p>
+                <img src="part4-image.jpg" alt="Part 4 Image" width="200">
+            </div>
+            <button class="part-button">Part 5</button>
+            <div class="part-description">
+                <h3>Part 5 Information</h3>
+                <p>Description for Part 5 goes here...</p>
+                <img src="part5-image.jpg" alt="Part 5 Image" width="200">
+            </div>
+            <button class="part-button">Part 6</button>
+            <div class="part-description">
+                <h3>Part 6 Information</h3>
+                <p>Description for Part 6 goes here...</p>
+                <img src="part6-image.jpg" alt="Part 6 Image" width="200">
+            </div>
+        </section>
+    
+    {% endblock %}

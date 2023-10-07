@@ -1,0 +1,156 @@
+{% extends 'structure.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Non-Critical Parts</title>
+    <style>
+
+
+        /* Header Styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Navigation Menu Styles */
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+
+        /* Content containerpart7 Styles */
+        .containerpart7 {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+
+        
+        /* Styles for the non-critical parts section */
+        .non-critical-section {
+            margin-top: 20px;
+        }
+
+        .part-button {
+            background-color: #3498db;
+            color: #fff;
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+
+        .part-description {
+            display: none;
+            margin-top: 20px;
+        }
+
+        /* Your CSS styles for the new window go here */
+        .popup-containerpart7 {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+        }
+
+        .popup-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup-image {
+            max-width: 100%;
+            height: auto;
+        }
+        .center-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 15vh;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header section -->
+    <header>
+        <h1>Non-Critical Parts</h1>
+    </header>
+
+    <!-- Navigation section -->
+    <nav>
+        <!-- Add your navigation links here -->
+    </nav>
+
+    <!-- Content containerpart7 -->
+    <div class="containerpart7">
+        <!-- Other content goes here -->
+       
+            <h2>Non-Critical Parts</h2>
+            <section class="non-critical-section">
+                <!-- Clicking on "Part6" opens the popup -->
+                
+            </section>
+        </div>
+
+        <!-- Part7 button -->
+        
+            <!-- Centered Part7 button -->
+            <div class="center-button">
+                <button class="part-button" onclick="openPart7Popup()">Part7</button>
+            </div>
+    
+
+        <!-- Part7 Popup -->
+        <div class="popup" id="part7-popup">
+            <div class="popup-content">
+                <h2>Part7 Information</h2>
+                <p class="part-description">Description for Part7 goes here...</p>
+                <img src="part7-image.jpg" alt="Part7 Image" class="part-image">
+                <button onclick="closePart7Popup()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript to handle popups -->
+    <script>
+        // Function to open Part7 popup
+        function openPart7Popup() {
+            var popup = document.getElementById("part7-popup");
+            popup.style.display = "block";
+        }
+
+        // Function to close Part7 popup
+        function closePart7Popup() {
+            var popup = document.getElementById("part7-popup");
+            popup.style.display = "none";
+        }
+    </script>
+</body>
+</html>
+{% endblock %}
